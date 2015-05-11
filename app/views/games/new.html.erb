@@ -4,7 +4,9 @@
   </div>
 </div>
 
-<div class="ui black button">Guess</div>
+<div class="guess-button">
+  <button class="ui black basic fluid button">Guess</button>
+</div>
 
 <div class="ui basic modal">
   <div class="header" style="text-align:center">
@@ -15,8 +17,8 @@
     <div id="guess">
        <%= form_for(@game) do |f| %>
        <%= f.hidden_field :location_id, class: "locaty", value: @location.id %>
-       <%= f.hidden_field :lat_guess, class: "latty" %>
-       <%= f.hidden_field :lng_guess, class: "longty" %>
+       <%= f.hidden_field :lat_guess, class: "latguess" %>
+       <%= f.hidden_field :lng_guess, class: "lngguess" %>
        <%= f.submit "Guess", class: "large ui teal basic fluid inverted button" %>
        <% end %>
     </div>
@@ -31,7 +33,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
   // modal clicking function
-    $('.ui.teal.button').click(function(){
+    $('.ui.black.basic.fluid.button').click(function(){
       $('.ui.basic.modal').modal({
         closable: false
       })
@@ -115,14 +117,17 @@ function init() {
   //  var map = new google.maps.Map(mapElement, mapOptions);
 
    // Let's also add a marker while we're at it
+
+   var map = new google.maps.Map(document.getElementById('map'),
+       mapOptions);
+       
    var marker = new google.maps.Marker({
        position: new google.maps.LatLng(40.6700, -73.9400),
        map: map,
        draggable: true
    });
 
-   var map = new google.maps.Map(document.getElementById('map'),
-       mapOptions);
+
 
 
   var pinPosition = {};
@@ -130,9 +135,9 @@ function init() {
   google.maps.event.addListener(marker, 'dragend', function(event) {
     console.debug('new position is '+event.latLng.lat()+' / '+event.latLng.lng());
     pinPosition.lat_guess = event.latLng.lat()
-    $(".latty").val(pinPosition.lat_guess)
+    $(".latguess").val(pinPosition.lat_guess)
     pinPosition.lng_guess = event.latLng.lng()
-    $(".longty").val(pinPosition.lng_guess)
+    $(".lngguess").val(pinPosition.lng_guess)
   });
 
 }
