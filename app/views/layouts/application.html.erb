@@ -23,6 +23,7 @@
 <body>
 <div class="logged-in">
   <div class="ui text menu right floated">
+  <% if user_signed_in? %>
     <i class="item nav">
       My Profile
     </i>
@@ -30,7 +31,10 @@
       <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
     </i>
   </div>
-  <div class="ui header">Wayfarer</div>
+    <div class="ui header"><%= link_to "Wayfarer", root_path %></div>
+  <% else %>
+    <div class="ui left aligned header"><%= link_to "Wayfarer", root_path %></div>
+  <% end %>
 </div>
 
 <div class="flash-messages">

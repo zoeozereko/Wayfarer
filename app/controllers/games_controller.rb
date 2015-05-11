@@ -10,6 +10,8 @@ class GamesController < ApplicationController
     @location = Location.find(params[:game][:location_id])
     @game = current_user.games.new(game_params)
     @game.location = @location
+    @game.score = Geocoder::Calculations.distance_between([@location.latitude, @location.longitude], [@game.lat_guess, @game.lng_guess]).round(2)
+
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game }
