@@ -2,9 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.flash-messages {
+  width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
 .street-view {
    max-width: 900px;
    margin: 0 auto;
 /*   height: 80%;
 padding-bottom: 50px; */
+}
+
+.show-map {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logged-in .ui.header {
+  color: black;
+  font-family: 'Nothing You Could Do', cursive;
+  font-weight: 100;
+  font-size: 60px;
+  padding: 30px;
+  display: inline;
+}
+
+.ui.text.menu.right.floated {
+  padding-right: 30px;
+  display: inline;
+}
+
+.ui.text.menu.right.floated .item.nav {
+  color: black;
+}
+
+.ui.text.menu.right.floated .item.nav a {
+  color: black;
 }

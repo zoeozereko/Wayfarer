@@ -9,9 +9,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'geocoder'
+gem 'devise'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 
 group :development, :test do
   gem 'byebug'
@@ -20,5 +22,6 @@ group :development, :test do
   gem 'hirb'
   gem 'interactive_editor'
   gem 'awesome_print'
+  gem 'pry-rails'
 
 end

@@ -2,12 +2,199 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
-  font-family: 'Raleway', sans-serif;
+img {
+  position: fixed;
+  padding-top: 10px;
+}
+
+.header {
+  font-family: 'Nothing You Could Do', cursive;
   font-weight: 100;
-  font-size: 50px;
+  font-size: 80px;
+  color: white;
+  padding: 30px;
+}
+
+.ui.text.menu {
+  padding-top: 20px;
+}
+
+.ui.text.menu .item {
+  color: white;
+}
+
+.ui.menu .text.item > *, .ui.menu .item > a:not(.ui), .ui.menu .item > p:only-child {
+  color: white;
+}
+
+.ui.vertical.rectangle.test.ad {
+  height: 500px;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+}
+
+.ui.vertical.segment {
+  height: 450px;
+  opacity: 0.9;
+}
+
+.ui.inverted.footer.vertical.segment {
+  height: 100px;
+}
+
+.ui.inverted.vertical.segment {
+  height: 350px;
+}
+
+/* login */
+
+.login {
+  margin: 0 auto;
+  width: 500px;
 }
 
 body {
   background: white;
 }
+
+/*******************************
+            Global
+*******************************/
+
+html {
+  font-size: 14px;
+}
+
+
+/*******************************
+            Global
+*******************************/
+
+/* #home .menu .right.menu > .mobile.item {
+  display: none;
+}
+
+--------------
+    Masthead
+---------------
+
+#home .masthead {
+  background-image: url(images/bg.jpg);
+  margin: 0em;
+  padding: 5rem 0rem;
+}
+#home .masthead .column {
+  position: relative;
+}
+#home .masthead .information {
+  margin: 10em 1em 1em 350px;
+}
+#home .masthead .information p {
+  max-width: 600px;
+}
+#home .masthead .image {
+  position: absolute;
+  left: 0%;
+  bottom: -110px;
+}
+
+--------------
+    Ribbons
+---------------
+
+#home .segment h1 {
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+#home .vertical.segment {
+  padding: 12rem 0rem;
+}
+
+#home .feature.segment {
+  margin: 0em;
+  padding: 6rem 0rem;
+}
+#home .feature.segment p {
+  min-height: 50px;
+}
+
+#home .selection.list {
+  margin: 0em -0.5em;
+}
+
+#home .logo.row {
+  height: 10rem;
+}
+
+--------------
+    Footer
+---------------
+
+#home .footer.segment {
+  background-color: #000000;
+  padding: 3rem 0rem;
+}
+
+
+******************************
+          Responsive
+******************************
+
+Mobile Only
+@media only screen and (max-width : 768px) {
+
+  #home .menu .right.menu > .item {
+    display: none;
+  }
+
+  #home .menu .right.menu > .mobile.item {
+    display: block;
+  }
+  #home .menu .right.menu > .mobile.item .menu {
+    left: auto;
+    right: 0em;
+  }
+
+  #home h1 {
+    font-size: 1.5em;
+  }
+  #home .masthead.segment .information {
+    margin-left: 170px;
+  }
+
+  #home .masthead.segment .image {
+    width: 170px;
+  }
+
+  #home .masthead.segment .button {
+    font-size: 1rem;
+  }
+
+  #home .overview .divided.grid .header .icon {
+    font-size: 1.5em;
+  }
+
+  #home .overview .divided.grid .header + p {
+    min-height: 0px;
+  }
+
+  #home .masthead.segment .column {
+    font-size: 0.7rem;
+  }
+
+  #home .masthead.segment .column p {
+    display: none;
+  }
+
+  #home .selection.list .right.floated {
+    display: none;
+  }
+}
+ */

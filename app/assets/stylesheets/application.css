@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
+/* 
 .header {
   background: white;
   font-family: 'Raleway', sans-serif;
@@ -21,3 +21,4 @@
   font-size: 50px;
   padding: 10px;
 }
+ */
