@@ -1,3 +1,5 @@
+<div id="timer"><i class="wait icon"></i></div>
+
 <div class="street-view">
   <div id="map-canvas" style="width:100%; height:450px" data-id="
     <%= @location.id %>">
@@ -10,7 +12,7 @@
 
 <div class="ui basic modal">
   <div class="header" style="text-align:center">
-    Drag the pin to where you think you are and click submit.
+    Drag the pin to where you think you are on the map. Click submit.
   </div>
   <div id="map" style="width:100%; height:450px;"></div>
   <div class="actions">
@@ -32,91 +34,85 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-  // modal clicking function
+    // TIMER function that opens the modal
+    var count = 10;
+
+    var counter = setInterval(timer, 1000);
+
+    function timer(){
+      count = count -1;
+
+      if (count <= 0) {
+        clearInterval(counter);
+
+      $('#timer').html();
+        $('.ui.basic.modal').modal({
+          closable: false
+        })
+        .modal('show');
+
+        setTimeout(initMap, 0);
+
+       return;
+      }
+    //Shows the seconds
+    document.getElementById("timer").innerHTML=count + " secs";
+    }
+
+
+    // MODAL button clicking function
     $('.ui.black.basic.fluid.button').click(function(){
       $('.ui.basic.modal').modal({
         closable: false
       })
       .modal('show');
+
+      setTimeout(initMap, 0);
     });
 
-  // loading google street view
-  function initialize() {
-    var lat = <%= @location.latitude %>
-    var lng = <%= @location.longitude %>
 
-    var location =  new google.maps.LatLng(lat, lng);
-    var panoramaOptions = {
-      position: location,
-      addressControl: false,
-      linksControl: false,
-      panControl: false,
-      zoomControlOptions: {
-      style: google.maps.ZoomControlStyle.SMALL
-      },
-      enableCloseButton: false
-    };
+    // GOOGLE street view map
+    function initialize() {
+      var lat = <%= @location.latitude %>
+      var lng = <%= @location.longitude %>
 
-  var myPano = new google.maps.StreetViewPanorama(document.getElementById('map-canvas'),
-      panoramaOptions);
-  myPano.setVisible(true);
+      var location =  new google.maps.LatLng(lat, lng);
+      var panoramaOptions = {
+        position: location,
+        addressControl: false,
+        linksControl: false,
+        panControl: false,
+        zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+        },
+        enableCloseButton: false
+      };
 
- // disable link to location on google logo
-  setInterval(function() {
-    $('.gm-style').find('a').first().attr('href', 'http://maps.google.com');
-  }, 50)
-  }
+    var myPano = new google.maps.StreetViewPanorama(document.getElementById('map-canvas'),
+        panoramaOptions);
+    myPano.setVisible(true);
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+    // disable link to location on google logo
+    setInterval(function() {
+      $('.gm-style').find('a').first().attr('href', 'http://maps.google.com');
+    }, 50)
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
 
 
-// map in the modal to place pin
 
-  // var options = {
-  //   zoom: 3,
-  //   center: latLng,
-  //   scrollwheel: false,
-  //   disableDoubleClickZoom: true,
-  //   mapTypeId: google.maps.MapTypeId.ROADMAP,
-  //   // locale: LANG
-  // }
+    // POP UP map in the modal
+    function initMap() {
 
-  // // var map = new google.maps.Map(document.getElementById('map'), options);
-  // //
-  // // var marker = new google.maps.Marker({
-  // //   position: latLng,
-  // //   map: map,
-  // //   draggable: true
-  // // });
-  // var mapElement = document.getElementById('map', options);
-  //
+    var mapOptions = {
+      zoom: 2,
 
-// google.maps.event.addListener(marker, "dragend", function() {
-//   marker.getPosition();
-// });
+      center: new google.maps.LatLng(29, -11),
 
-function init() {
-
-   var mapOptions = {
-       // How zoomed in you want the map to start at (always required)
-       zoom: 2,
-
-       // The latitude and longitude to center the map (always required)
-       center: new google.maps.LatLng(70, -130),
-
-       // How you would like to style the map.
-       // This is where you would paste any style found on Snazzy Maps.
-       styles: [{"elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"color":"#f5f5f2"},{"visibility":"on"}]},{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"poi.business","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","stylers":[{"visibility":"off"}]},{"featureType":"poi.sports_complex","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"visibility":"simplified"},{"color":"#ffffff"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"color":"#ffffff"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#71c8d4"}]},{"featureType":"landscape","stylers":[{"color":"#e5e8e7"}]},{"featureType":"poi.park","stylers":[{"color":"#8ba129"}]},{"featureType":"road","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.sports_complex","elementType":"geometry","stylers":[{"color":"#c7c7c7"},{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#a0d3d3"}]},{"featureType":"poi.park","stylers":[{"color":"#91b65d"}]},{"featureType":"poi.park","stylers":[{"gamma":1.51}]},{"featureType":"road.local","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"poi.government","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"landscape","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","stylers":[{"visibility":"simplified"}]},{"featureType":"road"},{"featureType":"road"},{},{"featureType":"road.highway"}]
+      styles: [{"elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"color":"#f5f5f2"},{"visibility":"on"}]},{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"poi.business","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","stylers":[{"visibility":"off"}]},{"featureType":"poi.sports_complex","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"visibility":"simplified"},{"color":"#ffffff"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"color":"#ffffff"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#71c8d4"}]},{"featureType":"landscape","stylers":[{"color":"#e5e8e7"}]},{"featureType":"poi.park","stylers":[{"color":"#8ba129"}]},{"featureType":"road","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.sports_complex","elementType":"geometry","stylers":[{"color":"#c7c7c7"},{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#a0d3d3"}]},{"featureType":"poi.park","stylers":[{"color":"#91b65d"}]},{"featureType":"poi.park","stylers":[{"gamma":1.51}]},{"featureType":"road.local","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"poi.government","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"landscape","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","stylers":[{"visibility":"simplified"}]},{"featureType":"road"},{"featureType":"road"},{},{"featureType":"road.highway"}]
    };
 
-   // Get the HTML DOM element that will contain your map
-   // We are using a div with id="map" seen below in the <body>
-  //  var mapElement = document.getElementById('map');
-
-   // Create the Google Map using our element and options defined above
-  //  var map = new google.maps.Map(mapElement, mapOptions);
-
-   // Let's also add a marker while we're at it
 
    var map = new google.maps.Map(document.getElementById('map'),
        mapOptions);
@@ -127,54 +123,18 @@ function init() {
        draggable: true
    });
 
+   var pinPosition = {};
 
+   google.maps.event.addListener(marker, 'dragend', function(event) {
+     console.debug('new position is '+event.latLng.lat()+' / '+event.latLng.lng());
+     pinPosition.lat_guess = event.latLng.lat()
+     $(".latguess").val(pinPosition.lat_guess)
+     pinPosition.lng_guess = event.latLng.lng()
+     $(".lngguess").val(pinPosition.lng_guess)
+   });
 
-
-  var pinPosition = {};
-
-  google.maps.event.addListener(marker, 'dragend', function(event) {
-    console.debug('new position is '+event.latLng.lat()+' / '+event.latLng.lng());
-    pinPosition.lat_guess = event.latLng.lat()
-    $(".latguess").val(pinPosition.lat_guess)
-    pinPosition.lng_guess = event.latLng.lng()
-    $(".lngguess").val(pinPosition.lng_guess)
-  });
-
-}
-
-google.maps.event.addDomListener(window, 'load', init);
-
-// $('#guess').click(function(){
-  // $.ajax({
-  //   url: "/games",
-  //   data: {
-  //     location_id: $("#map-canvas").data("id"),
-  //     game: pinPosition
-  //   },
-  //   dataType: "json",
-  //   method: "POST",
-  //   error: function(){
-  //     console.log(pinPosition);
-  //   },
-  //   success: function(data){
-  //     console.log(data);
-  //   }
-  // });
-// });
-  // handler = Gmaps.build('Google');
-  // handler.buildMap({ provider: {}, internal: {id: 'map'}}, function() {
-  //   // handler.bounds.extendWith();
-  //   // handler.fitMapToBounds();
-  // });
-  //
-  // var myLatlng = new google.maps.LatLng(40, -70);
-  // var mapOptions = {
-  //   zoom: 2,
-  //   center: myLatlng,
-  //   mapTypeId: google.maps.MapTypeId.ROADMAP
-  // };
-  // var map = new google.maps.Map(document.getElementById("map"),
-  //   mapOptions);
+   }
+// google.maps.event.addDomListener(window, 'load', init);
 
 });
 </script>

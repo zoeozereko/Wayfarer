@@ -52,7 +52,7 @@
         <% end %>
       </div>
 
-      <div class="header"> Wayfarer </div>
+      <div class="header"><%= link_to "Wayfarer", root_path %></div>
 
       <div class="ui vertical rectangle test ad"></div>
 
@@ -71,32 +71,36 @@
         </div>
       </div>
       <div class="row">
-        <div class="ten wide column">
+        <div class="center aligned sixteen wide column">
           <div class="ui inverted animated selection list">
             <div class="item">
               Create an account by clicking on "Sign Up"
             </div>
             <div class="item">
-              Click "play" to be transported to a Google Street View somewhere in the world
+              Click "play" to be transported to a Google Street View somewhere in the world.
             </div>
             <div class="item">
-              You have 30 seconds to walk around and figure out where you are
+              You have 30 seconds to walk around and figure out where you are.
             </div>
             <div class="item">
-              When time is up, a map will appear. Drop a pin where you think you are!
+              When time is up, a map will pop up on the screen.
             </div>
             <div class="item">
-              Click "Guess" to see where you are on the map!
+              Drag the pin to the location you think you have been placed in.
+            </div>
+            <div class="item">
+              Click "Submit" to submit your answer.
+            </div>
+            <div class="item">
+              You will be redirected to a map with two pins in it. One pin is the location you guessed, and the other is the location you were placed in. See how close you got!
             </div>
             <div class="item">
               Play again!
             </div>
-          </div>
-        </div>
-        <div class="six wide column">
-          <div class="ui teal inverted animated button huge button">
-            <div class="visible content">Let's Play!</div>
-            <div class="hidden content"><%= link_to "Let's Play!", new_game_path %></div>
+            <div class="ui teal inverted animated button huge button">
+              <div class="visible content">Let's Play!</div>
+              <div class="hidden content"><%= link_to "Let's Play!", new_game_path %></div>
+            </div>
           </div>
         </div>
       </div>
