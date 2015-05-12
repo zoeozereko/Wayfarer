@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :games
   resources :locations
 
+  resources :users, only: [:index, :show]
 
 end

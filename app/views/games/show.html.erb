@@ -14,6 +14,12 @@
   <div class="ui teal button"><%= link_to "Play again!", new_game_path %></div>
 </div>
 
+<!-- <div class="top-scores">
+  <h1>High Scores on this level</h1>
+  <%# @games.each do |game| %>
+    <%#= game.score %>
+  <%# end %>
+</div> -->
 
 
 <script type="text/javascript">
@@ -39,6 +45,7 @@
    var marker = new google.maps.Marker({
        position: new google.maps.LatLng(<%= @location.latitude %>, <%= @location.longitude %>),
        map: map,
+       animation: google.maps.Animation.DROP
    });
 
    var markerGuess = new google.maps.Marker({

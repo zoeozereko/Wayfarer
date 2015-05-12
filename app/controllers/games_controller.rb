@@ -1,6 +1,10 @@
 class GamesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @games = current_user.games.all
+  end
+
   def new
     @game = Game.new
     @location = Location.random
@@ -25,6 +29,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @games = Game.all
     @location = Location.find(@game.location.id)
   end
 
