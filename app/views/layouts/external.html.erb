@@ -31,6 +31,12 @@
             <a href="#about">About</a>
           </i>
           <i class="item">
+            <%= link_to "High Scores", games_path %>
+          </i>
+          <i class="item">
+            <%= link_to "Update Account", edit_user_registration_path %>
+          </i>
+          <i class="item">
             <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
           </i>
           <i class="item">
