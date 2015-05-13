@@ -1,25 +1,41 @@
-<h1>High Scores</h1>
+<h1 style="text-align: center">Your Scores</h1>
 
-<!-- have scores of each level the user has played. score + city -->
+<!-- sort lowest to highest, limit one city per user -->
 
-<!-- need to add city!!! -->
-
-
-<table class="ui table">
+<table class="ui inverted table">
   <thead>
     <tr>
       <th>Level</th>
       <th>Score</th>
-      <th>Top Score on this level???</th>
     </tr>
   </thead>
   <tbody>
-    <% @games.each do |game| %>
     <tr>
-      <td>level</td>
+      <% @games.each do |game| %>
+      <td><%= game.location.city %></td>
       <td><%= game.score %></td>
-      <td>score</td>
     </tr>
-    <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+<h1>Top Scores</h1>
+<table class="ui inverted table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Level</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @locations.each do |game| %>
+      <!-- <td><%#= game.user.username %> </td> -->
+      <td><%= game.city %></td>
+      <!-- <td><%#= game.games.users.username %></td> -->
+      <td><%=  %></td>
+    </tr>
+      <% end %>
   </tbody>
 </table>

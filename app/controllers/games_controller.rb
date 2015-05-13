@@ -3,11 +3,14 @@ class GamesController < ApplicationController
 
   def index
     @games = current_user.games.all
+    @locations = Location.all
+    # @high_score = Game.minimum(:score)
   end
 
   def new
     @game = Game.new
-    @location = Location.random
+    location_ids = current_user.games.pluck(:location_id)
+    @location = Location.where.not(id: location_ids).random
   end
 
   def create
@@ -16,15 +19,17 @@ class GamesController < ApplicationController
     @game.location = @location
     @game.score = Geocoder::Calculations.distance_between([@location.latitude, @location.longitude], [@game.lat_guess, @game.lng_guess]).round(2)
 
-    respond_to do |format|
+    # respond_to do |format|
       if @game.save
-        format.html { redirect_to @game }
-        format.json { render json: @game }
+        redirect_to @game
+        # format.html {  }
+        # format.json { render json: @game }
       else
-        format.html { render :new }
-        format.json { render json: @game.errors }
+        render :new
+        # format.html {  }
+        # format.json { render json: @game.errors }
       end
-    end
+    # end
   end
 
   def show

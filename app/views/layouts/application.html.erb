@@ -38,10 +38,12 @@
     </i>
   </div>
     <div class="ui header"><%= link_to "Wayfarer", root_path %></div>
+    <hr>
   <% else %>
     <div class="ui left aligned header"><%= link_to "Wayfarer", root_path %></div>
   <% end %>
 </div>
+
 
 <div class="flash-messages">
   <% if flash[:notice] %>
