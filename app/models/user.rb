@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  
+
   has_many :games, dependent: :destroy
+  has_many :locations, through: :games
 
   # def name_display
   #   if first_name || last_name

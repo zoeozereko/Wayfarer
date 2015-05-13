@@ -1,8 +1,10 @@
+<div class="ui primary teal inverted segment">
+  <p>Remember -- try to get the LOWEST score possible</p>
+</div>
+
 <h1 style="text-align: center">Your Scores</h1>
 
-<!-- sort lowest to highest, limit one city per user -->
-
-<table class="ui inverted table">
+<table class="ui sortable celled table">
   <thead>
     <tr>
       <th>Level</th>
@@ -19,23 +21,31 @@
   </tbody>
 </table>
 
-<h1>Top Scores</h1>
-<table class="ui inverted table">
+<h1 style="text-align:center">Leaderboard</h1>
+<table class="ui sortable celled table">
   <thead>
     <tr>
-      <th>Username</th>
       <th>Level</th>
+      <th>Username</th>
       <th>Score</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <% @locations.each do |game| %>
-      <!-- <td><%#= game.user.username %> </td> -->
-      <td><%= game.city %></td>
-      <!-- <td><%#= game.games.users.username %></td> -->
-      <td><%=  %></td>
+      <% @locations.each do |location| %>
+      <td><%= location.city %></td>
+      <td><%= location.top_scorer.username %></td>
+      <td><%= location.top_game.score %></td>
     </tr>
       <% end %>
   </tbody>
 </table>
+
+
+<script>
+$(document).ready(function() {
+
+  $("table").tablesort();
+
+});
+</script>

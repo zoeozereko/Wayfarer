@@ -23,5 +23,6 @@ group :development, :test do
   gem 'interactive_editor'
   gem 'awesome_print'
   gem 'pry-rails'
+  gem 'quiet_assets', group: :development
 
 end
