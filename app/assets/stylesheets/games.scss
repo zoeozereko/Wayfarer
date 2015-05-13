@@ -59,8 +59,6 @@
 .street-view {
   max-width: 900px;
   margin: 0 auto;
-/*   height: 80%;
-padding-bottom: 50px; */
 }
 
 #timer {
@@ -100,8 +98,16 @@ padding-bottom: 50px; */
 
 /**** SCORES page ****/
 /********************/
-.ui.inverted.table {
+.ui.sortable.celled.table {
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0.8;
+  margin-bottom: 100px;
+}
+
+.ui.primary.teal.inverted.segment {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 50px;
 }

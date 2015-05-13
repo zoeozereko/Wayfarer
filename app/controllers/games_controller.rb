@@ -2,9 +2,8 @@ class GamesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @games = current_user.games.all
-    @locations = Location.all
-    # @high_score = Game.minimum(:score)
+    @games = current_user.games
+    @locations =current_user.locations
   end
 
   def new
