@@ -2,7 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/**** LOGGED-IN NAVBAR ****/
+/*************************/
+.logged-in .ui.header a {
+  color: black;
+  font-family: 'Nothing You Could Do', cursive;
+  font-weight: 100;
+  font-size: 75px;
+  margin-top: 50px;
+  padding: 20px;
+  display: block;
+}
 
+.ruler {
+  height: 1px;
+  background: black;
+}
+
+.ui.text.menu {
+  display: inline;
+  float: right;
+  padding-right: 15px;
+}
+
+.ui.text.menu .item.nav {
+  color: black;
+}
+
+.ui.text.menu .item.nav a {
+  color: black;
+}
+
+
+
+/****LOGGED-OUT NAVBAR****/
+/************************/
+.ui.left.aligned.header a {
+  top: 0;
+  left: 0;
+  font-family: 'Nothing You Could Do', cursive;
+  position: absolute;
+  color: black;
+  font-weight: 100;
+  font-size: 60px;
+  padding-top: 10px;
+}
+
+
+/**** GAME#NEW ****/
+/*****************/
+.ui.indicating.progress {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 35px;
+}
 .street-view {
   max-width: 900px;
   margin: 0 auto;
@@ -15,52 +68,18 @@ padding-bottom: 50px; */
   font-size: 20px
 }
 
-.show-page-map {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .guess-button {
   margin: 0 auto;
   max-width: 200px;
 }
 
-.reveal {
-  text-align: center;
-  margin-top: -30px;
-}
-
-.ui.left.aligned.header a {
-  top: 30;
-  left: 0;
-  position: absolute;
-  color: black;
-  font-weight: 100;
-  font-size: 60px;
-  padding: 30px;
-}
 
 
-.logged-in .ui.header a {
-  color: black;
-  font-family: 'Nothing You Could Do', cursive;
-  font-weight: 100;
-  font-size: 60px;
-  padding: 30px;
-  display: inline;
-}
-
-.ui.text.menu.right.floated {
-  padding-right: 30px;
-  display: inline;
-}
-
-.ui.text.menu.right.floated .item.nav {
-  color: black;
-}
-
-.ui.text.menu.right.floated .item.nav a {
-  color: black;
+/**** GAME#SHOW ****/
+/******************/
+.show-page-map {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .score {
@@ -71,11 +90,18 @@ padding-bottom: 50px; */
 .play-again {
   text-align: center;
   padding: 10px;
-
 }
 
-.ui.indicating.progress {
-  max-width: 800px;
+.reveal {
+  text-align: center;
+  margin-top: -30px;
+}
+
+
+/**** SCORES page ****/
+/********************/
+.ui.inverted.table {
+  max-width: 600px;
   margin: 0 auto;
-  margin-bottom: 35px;
+  opacity: 0.8;
 }

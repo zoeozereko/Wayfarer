@@ -25,7 +25,7 @@
 <%= image_tag "homepage.jpg" %>
   <div class="ui page grid">
     <div class="column">
-      <div class="ui text menu right floated">
+      <div class="ui text menu">
         <% if user_signed_in? %>
           <i class="item">
             <a href="#about">About</a>
@@ -57,12 +57,11 @@
           </i>
         <% end %>
       </div>
-
       <div class="header"><%= link_to "Wayfarer", root_path %></div>
-
-      <div class="ui vertical rectangle test ad"></div>
-
     </div>
+  </div>
+
+  <div class="ui basic segment">
   </div>
 
   <div class="ui inverted vertical segment">
