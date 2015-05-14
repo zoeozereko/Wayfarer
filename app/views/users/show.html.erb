@@ -1,0 +1,29 @@
+<div class="users">
+  <h2><%= @user.first_name %> <%= @user.last_name%></h2>
+</div>
+
+<h1 style="text-align:center"><%= @user.username %>'s Scores</h1>
+<table class="ui sortable celled table">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.locations.each do |location| %>
+    <tr>
+      <td><%= location.city %></td>
+      <td><%= location.games.find_by_user_id(@user.id).score %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+
+<script>
+  $(document).ready(function() {
+
+    $("table").tablesort();
+
+  });
+</script>

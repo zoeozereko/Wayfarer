@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @games = current_user.games
-    @locations =current_user.locations
+    @locations = current_user.locations
   end
 
   def new
@@ -17,18 +17,11 @@ class GamesController < ApplicationController
     @game = current_user.games.new(game_params)
     @game.location = @location
     @game.score = Geocoder::Calculations.distance_between([@location.latitude, @location.longitude], [@game.lat_guess, @game.lng_guess]).round(2)
-
-    # respond_to do |format|
       if @game.save
         redirect_to @game
-        # format.html {  }
-        # format.json { render json: @game }
       else
         render :new
-        # format.html {  }
-        # format.json { render json: @game.errors }
       end
-    # end
   end
 
   def show

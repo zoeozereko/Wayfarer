@@ -102,12 +102,22 @@
   max-width: 600px;
   margin: 0 auto;
   margin-bottom: 100px;
+  background: #F0FFFF;
 }
 
-.ui.primary.teal.inverted.segment {
-  max-width: 300px;
-  margin: 0 auto;
+.cards-container {
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+.ui.sortable.celled.table a {
+  color: black;
+}
+
+.ui.sortable.celled.table a:hover {
+  font-weight: bold;
+}
+
+.users {
   text-align: center;
-  font-size: 16px;
-  margin-bottom: 50px;
 }

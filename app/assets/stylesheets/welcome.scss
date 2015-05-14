@@ -9,6 +9,19 @@ img {
   padding-top: 10px;
 }
 
+.ui.footer {
+  background: black;
+  min-height: 100px;
+  margin-top: -10px;
+}
+
+.ui.footer img {
+  position: absolute;
+  bottom: 35px;
+  right: 65px;
+  width: 125px;
+}
+
 .header {
   font-family: 'Nothing You Could Do', cursive;
   font-weight: 100;
@@ -39,28 +52,25 @@ a:hover {
   color: white;
 }
 
-.ui.vertical.segment {
-  height: 450px;
-  opacity: 0.9;
-  background: white;
-}
 
 .ui.inverted.vertical.segment {
-  height: 450px;
-  color: white;
   opacity: 0.9;
+  padding-bottom: 40px;
 }
 
-.ui.horizontal.segment {
-  background: black;
+.ui.inverted.vertical.segment .item {
+  font-size: 16px;
+  padding: 5px;
 }
+
 .ui.vertical.rectangle.test.ad {
-  height: 600px;
+  height: 550px;
 }
 
 
-.ui.teal.inverted.animated.button.huge.button {
-  margin-top: 5px;
+.ui.teal.animated.button.huge.button {
+  margin-top: 30px;
+  text-align: center;
 }
 
 #play .header {
@@ -76,6 +86,8 @@ a:hover {
 
 body {
   background: white;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .flash-messages {
