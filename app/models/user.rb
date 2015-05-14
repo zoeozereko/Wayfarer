@@ -11,14 +11,4 @@ class User < ActiveRecord::Base
   has_many :games, dependent: :destroy
   has_many :locations, through: :games
 
-  # def name_display
-  #   if first_name || last_name
-  #     "#{first_name} #{last_name}".strip.squeeze(" ")
-  #   elsif
-  #     username
-  #   else
-  #     email
-  #   end
-  # end
-
 end
