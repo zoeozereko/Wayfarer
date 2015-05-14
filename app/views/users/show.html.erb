@@ -7,14 +7,28 @@
   <thead>
     <tr>
       <th>Level</th>
+      <th>Distance Away</th>
+      <th>Time Taken</th>
       <th>Score</th>
+      <th>Achievement</th>
     </tr>
   </thead>
   <tbody>
     <% @user.locations.each do |location| %>
     <tr>
       <td><%= location.city %></td>
-      <td><%= location.games.find_by_user_id(@user.id).score %></td>
+      <td><%= location.games.find_by_user_id(@user.id).score %> miles</td>
+      <td><%= location.games.find_by_user_id(@user.id).elapsed_time %> seconds</td>
+      <td><%= location.games.find_by_user_id(@user.id).points %></td>
+      <% if location.games.find_by_user_id(@user.id).points >= 5001 %>
+        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i> Bronze</td>
+      <% elsif location.games.find_by_user_id(@user.id).points >= 2001 %>
+        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i> Silver</td>
+      <% elsif location.games.find_by_user_id(@user.id).points >= 101 %>
+        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i> Gold</td>
+      <% else %>
+      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i> Platinum</td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

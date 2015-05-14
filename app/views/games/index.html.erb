@@ -4,14 +4,28 @@
   <thead>
     <tr>
       <th>Level</th>
+      <th>Distance Away</th>
+      <th>Time Taken</th>
       <th>Score</th>
+      <th>Achievement</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <% @games.each do |game| %>
       <td><%= game.location.city %></td>
-      <td><%= game.score %></td>
+      <td><%= game.score %> miles</td>
+      <td><%= game.elapsed_time %> seconds</td>
+      <td><%= game.points %></td>
+      <% if game.points >= 5001 %>
+        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i> Bronze</td>
+      <% elsif game.points >= 2001 %>
+        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i> Silver</td>
+      <% elsif game.points >= 101 %>
+        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i> Gold</td>
+      <% else %>
+      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i> Platinum</td>
+      <% end %>
     </tr>
       <% end %>
   </tbody>
@@ -23,7 +37,10 @@
     <tr>
       <th>Level</th>
       <th>Username</th>
+      <th>Distance Away</th>
+      <th>Time Taken</th>
       <th>Score</th>
+      <th>Achievement</th>
     </tr>
   </thead>
   <tbody>
@@ -31,7 +48,18 @@
       <% @locations.each do |location| %>
       <td><%= location.city %></td>
       <td><%= link_to location.top_scorer.username, user_path(location.top_scorer) %></td>
-      <td><%= location.top_game.score %></td>
+      <td><%= location.top_game.score %> miles</td>
+      <td><%= location.top_game.elapsed_time %> seconds</td>
+      <td><%= location.top_game.points %></td>
+      <% if location.top_game.points >= 5001 %>
+        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i> Bronze</td>
+      <% elsif location.top_game.points >= 2001 %>
+        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i> Silver</td>
+      <% elsif location.top_game.points >= 101 %>
+        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i> Gold</td>
+      <% else %>
+      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i> Platinum</td>
+      <% end %>
     </tr>
       <% end %>
   </tbody>

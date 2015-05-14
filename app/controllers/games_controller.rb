@@ -32,7 +32,7 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:lat_guess, :lng_guess, :score)
+    params.require(:game).permit(:lat_guess, :lng_guess, :score, :elapsed_time)
   end
 
 end
