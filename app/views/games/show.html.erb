@@ -1,17 +1,40 @@
-<div class="reveal">
-  <h3>You are in <%= @location.city %>!</h3>
-</div>
+<div class="ui very relaxed stackable page grid">
+  <div class="row">
+    <div class="eleven wide column">
+      <span class="reveal">
+        <h1>You're in <%= @location.city %>!</h1>
+      </span>
+      <div class="show-page-map">
+        <div id="show-map" style="width:100%; height:400px;"></div>
+      </div>
+    </div>
 
-<div class="show-page-map">
-  <div id="show-map" style="width:100%; height:400px;"></div>
-</div>
+    <div class="five wide column">
+      <div class="score">
+        <p>Miles away:  <%= @game.score %></p>
+      </div>
+      <div class="points-earned">
+        <p>Score:  <%= @game.points %> points</p>
+        <p>You earned a
+          <% if @game.points >= 5001 %>
+            <i style="color:#965A38;" class="fa fa-diamond fa-2x fa-spin"></i> bronze medal</p>
+          <% elsif @game.points >= 2001 %>
+            <i style="color:#A8A8A8;" class="fa fa-diamond fa-2x fa-spin"></i> silver medal</p>
+          <% elsif @game.points >= 101 %>
+            <i style="color:#D9A441;" class="fa fa-diamond fa-2x fa-spin"></i> gold medal</p>
+          <% else %>
+            <i style="color:#CCC2C2;" class="fa fa-diamond fa-2x fa-spin"></i> platinum medal</p>
+          <% end %>
+      </div>
+      <div class="play-again">
+        <div class="ui teal button"><%= link_to "Play Next Level", new_game_path %></div>
+      </div>
+      <div class="play-again">
+        <div class="ui purple button"><%= link_to "Your Scores // Top Scores", games_path %></div>
+      </div>
+    </div>
 
-<div class="score">
-  <p>Your guess was <%= @game.score %> miles away from <%= @location.city %>.</p>
-</div>
-
-<div class="play-again">
-  <div class="ui teal button"><%= link_to "Play Next Level", new_game_path %></div>
+  </div>
 </div>
 
 
