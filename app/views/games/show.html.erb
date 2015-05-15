@@ -4,6 +4,7 @@
       <span class="reveal">
         <h1>You're in <%= @location.city %>!</h1>
       </span>
+      
       <div class="show-page-map">
         <div id="show-map" style="width:100%; height:400px;"></div>
       </div>
@@ -14,16 +15,16 @@
         <p>Miles away:  <%= @game.score %></p>
       </div>
       <div class="points-earned">
-        <p>Score:  <%= @game.points %> points</p>
-        <p>You earned a
-          <% if @game.points >= 5001 %>
-            <i style="color:#965A38;" class="fa fa-diamond fa-2x fa-spin"></i> bronze medal</p>
+        <p>Score:  <%= @game.points.round %> points</p>
+        <p>You earned a </p>
+        <p><% if @game.points >= 5001 %>
+            <i style="color:#965A38;" class="fa fa-diamond fa-3x fa-spin"></i></p><p>bronze medal</p>
           <% elsif @game.points >= 2001 %>
-            <i style="color:#A8A8A8;" class="fa fa-diamond fa-2x fa-spin"></i> silver medal</p>
+            <i style="color:#A8A8A8;" class="fa fa-diamond fa-3x fa-spin"></i></p><p>silver medal</p>
           <% elsif @game.points >= 101 %>
-            <i style="color:#D9A441;" class="fa fa-diamond fa-2x fa-spin"></i> gold medal</p>
+            <i style="color:#D9A441;" class="fa fa-diamond fa-3x fa-spin"></i></p><p>gold medal</p>
           <% else %>
-            <i style="color:#CCC2C2;" class="fa fa-diamond fa-2x fa-spin"></i> platinum medal</p>
+            <i style="color:#CCC2C2;" class="fa fa-diamond fa-3x fa-spin"></i></p><p>platinum medal</p>
           <% end %>
       </div>
       <div class="play-again">

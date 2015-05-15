@@ -4,9 +4,9 @@ class Game < ActiveRecord::Base
 
   def points
     if elapsed_time == 0
-      score.to_i * 1
+      score * 1
     else
-      score.to_i * elapsed_time
+      score * elapsed_time
     end
   end
 

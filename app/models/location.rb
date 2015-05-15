@@ -14,4 +14,5 @@ class Location < ActiveRecord::Base
     games.order("score ASC").first
   end
 
+
 end
