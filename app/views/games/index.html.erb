@@ -16,6 +16,7 @@
     </tr>
   </tbody>
 </table>
+<p id="score">Score = Distance Away x Time Taken</p>
 
 <h1 style="text-align: center">Your Scores</h1>
 <table class="ui sortable celled table">
@@ -25,7 +26,7 @@
       <th>Distance Away</th>
       <th>Time Taken</th>
       <th>Score</th>
-      <th>Achievement</th>
+      <th><i class="fa fa-diamond fa-2x"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -34,15 +35,15 @@
       <td><%= game.location.city %></td>
       <td><%= game.score %> miles</td>
       <td><%= game.elapsed_time %> seconds</td>
-      <td><%= game.points %></td>
+      <td><%= game.points.round %></td>
       <% if game.points >= 5001 %>
-        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i> Bronze</td>
+        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i></td>
       <% elsif game.points >= 2001 %>
-        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i> Silver</td>
+        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i></td>
       <% elsif game.points >= 101 %>
-        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i> Gold</td>
+        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i></td>
       <% else %>
-      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i> Platinum</td>
+      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i></td>
       <% end %>
     </tr>
       <% end %>
@@ -58,7 +59,7 @@
       <th>Distance Away</th>
       <th>Time Taken</th>
       <th>Score</th>
-      <th>Achievement</th>
+      <th><i class="fa fa-diamond fa-2x"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -68,20 +69,24 @@
       <td><%= link_to location.top_scorer.username, user_path(location.top_scorer) %></td>
       <td><%= location.top_game.score %> miles</td>
       <td><%= location.top_game.elapsed_time %> seconds</td>
-      <td><%= location.top_game.points %></td>
+      <td><%= location.top_game.points.round %></td>
       <% if location.top_game.points >= 5001 %>
-        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i> Bronze</td>
+        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i></td>
       <% elsif location.top_game.points >= 2001 %>
-        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i> Silver</td>
+        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i></td>
       <% elsif location.top_game.points >= 101 %>
-        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i> Gold</td>
+        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i></td>
       <% else %>
-      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i> Platinum</td>
+      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i></td>
       <% end %>
     </tr>
       <% end %>
   </tbody>
 </table>
+
+<div id="play">
+  <div class="ui teal button"><%= link_to "Play Next Level", new_game_path %></div>
+</div>
 
 <script>
 $(document).ready(function() {

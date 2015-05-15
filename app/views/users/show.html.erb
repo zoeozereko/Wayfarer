@@ -10,7 +10,7 @@
       <th>Distance Away</th>
       <th>Time Taken</th>
       <th>Score</th>
-      <th>Achievement</th>
+      <th><i class="fa fa-diamond fa-2x"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -19,15 +19,15 @@
       <td><%= location.city %></td>
       <td><%= location.games.find_by_user_id(@user.id).score %> miles</td>
       <td><%= location.games.find_by_user_id(@user.id).elapsed_time %> seconds</td>
-      <td><%= location.games.find_by_user_id(@user.id).points %></td>
+      <td><%= location.games.find_by_user_id(@user.id).points.round %></td>
       <% if location.games.find_by_user_id(@user.id).points >= 5001 %>
-        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i> Bronze</td>
+        <td><i style="color:#965A38;" class="fa fa-diamond fa-2x"></i></td>
       <% elsif location.games.find_by_user_id(@user.id).points >= 2001 %>
-        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i> Silver</td>
+        <td><i style="color:#A8A8A8;" class="fa fa-diamond fa-2x"></i></td>
       <% elsif location.games.find_by_user_id(@user.id).points >= 101 %>
-        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i> Gold</td>
+        <td><i style="color:#D9A441;" class="fa fa-diamond fa-2x"></i></td>
       <% else %>
-      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i> Platinum</td>
+      <td><i style="color:#CCC2C2;" class="fa fa-diamond fa-2x"></i></td>
       <% end %>
     </tr>
     <% end %>
