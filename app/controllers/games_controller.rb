@@ -10,6 +10,9 @@ class GamesController < ApplicationController
     @game = Game.new
     location_ids = current_user.games.pluck(:location_id)
     @location = Location.where.not(id: location_ids).random
+    if @location == nil
+      redirect_to users_path, notice: "Congrats you have played all the levels! Stay tuned for more..."
+    end
   end
 
   def create
